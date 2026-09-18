@@ -3,54 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="도주환 Backend Engineer Resume and Portfolio">
+  <meta name="description" content="도주환 Backend Engineer — 데이터 흐름과 실패를 설계하는 백엔드 엔지니어">
+  <meta name="theme-color" content="#0e1917">
   <title>도주환 | Backend Engineer</title>
   <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
 </head>
 <body>
+  <div class="reading-progress" aria-hidden="true"></div>
   <main class="landing">
-    <nav class="nav shell">
-      <a class="brand" href="./">도주환<span>.</span></a>
+    <nav class="nav shell" aria-label="주요 메뉴">
+      <a class="brand" href="./"><span class="brand-mark">DJH</span><span>도주환 · Backend Engineer</span></a>
       <div class="nav-links">
         <a href="./resume/">Resume</a>
         <a href="./portfolio/">Portfolio</a>
-        <a href="mailto:ehwnghks@gmail.com">Contact</a>
+        <a class="nav-contact" href="mailto:ehwnghks@gmail.com">Contact</a>
       </div>
     </nav>
 
     <section class="hero shell">
-      <p class="eyebrow">BACKEND ENGINEER · TYPESCRIPT · NESTJS · AWS</p>
-      <h1>복잡한 시스템을<br><em>안정적인 흐름</em>으로 만듭니다.</h1>
-      <p class="hero-copy">데이터 흐름과 상태 전이를 구조화하고, 장애와 트래픽 변화에도 견딜 수 있는 백엔드 시스템을 설계합니다.</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="./resume/">경력기술서 보기 <span>→</span></a>
-        <a class="button button-ghost" href="./portfolio/">프로젝트 보기 <span>↗</span></a>
+      <div data-reveal>
+        <p class="eyebrow">BACKEND ENGINEER · TYPESCRIPT · NESTJS · AWS</p>
+        <h1>실패까지 설계하는<br><span class="accent">백엔드 엔지니어.</span></h1>
+        <p class="hero-copy">기능을 만드는 데서 멈추지 않습니다. <strong>데이터가 흘러가는 방식, 실패했을 때의 복구, 운영자가 다시 실행할 수 있는 구조</strong>까지 설계합니다.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="./portfolio/">대표 프로젝트 보기 <span>→</span></a>
+          <a class="button button-ghost" href="./resume/">경력기술서 <span>↗</span></a>
+        </div>
       </div>
-      <div class="hero-note"><span class="status-dot"></span> Currently building reliable product systems</div>
+
+      <aside class="hero-proof" data-reveal aria-label="주요 성과">
+        <div class="proof-head">
+          <p class="diagram-label">IMPACT MONITOR</p>
+          <span class="live-pill">PRODUCTION</span>
+        </div>
+        <div class="proof-stack">
+          <div class="proof-row"><span>LATENCY</span><strong>혈당 그래프 API</strong><b>−80%</b></div>
+          <div class="proof-row"><span>OPERATIONS</span><strong>월간 반복 업무</strong><b>−8h</b></div>
+          <div class="proof-row"><span>PIPELINE</span><strong>대규모 문서 색인</strong><b>3×</b></div>
+          <div class="proof-row"><span>FAILURE</span><strong>데이터 수집 실패</strong><b>−96%</b></div>
+        </div>
+        <div class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </aside>
     </section>
 
-    <section class="landing-grid shell">
-      <a class="landing-card accent-card" href="./resume/">
-        <p class="card-index">01 / RESUME</p>
-        <h2>경력기술서</h2>
-        <p>경력, 역할, 기술 스택, 핵심 성과를 빠르게 확인할 수 있도록 정리했습니다.</p>
-        <span class="card-link">경력 전체 보기 →</span>
-      </a>
-      <a class="landing-card" href="./portfolio/">
-        <p class="card-index">02 / PORTFOLIO</p>
-        <h2>프로젝트 포트폴리오</h2>
-        <p>문제의 원인을 찾고, 구조를 바꾸고, 운영 가능한 시스템으로 만든 과정을 기록했습니다.</p>
-        <span class="card-link">사례 자세히 보기 →</span>
-      </a>
+    <section class="shell" aria-label="성과 수치" data-reveal>
+      <div class="impact-strip">
+        <div class="impact-item"><strong>2.5s → 0.5s</strong><span>API 응답 성능 개선</span></div>
+        <div class="impact-item"><strong>4–5s → 0.9s</strong><span>통계 대시보드 응답</span></div>
+        <div class="impact-item"><strong>90일 → 30일</strong><span>대규모 문서 색인</span></div>
+        <div class="impact-item"><strong>5억+</strong><span>첨부파일 색인 규모</span></div>
+      </div>
     </section>
 
-    <section class="quote shell">
-      <p>“기능 구현을 넘어 데이터 흐름을 최적화하고,<br>팀이 지속적으로 개선할 수 있는 구조를 만듭니다.”</p>
+    <section class="section shell" data-reveal>
+      <div class="section-head">
+        <span class="section-kicker">01 / Explore</span>
+        <div>
+          <h2>한 줄의 경력을<br>설계의 근거까지 연결합니다.</h2>
+          <p>채용 담당자는 성과를 빠르게 보고, 엔지니어는 그 성과를 만든 구조와 판단을 더 깊게 볼 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="bridge">
+        <a class="bridge-card" href="./resume/">
+          <p class="card-index">RESUME / QUICK SCAN</p>
+          <h3>무엇을 만들었는지</h3>
+          <p>경력, 역할, 기술 스택과 측정 가능한 성과를 한눈에 확인합니다.</p>
+          <span class="text-link">경력기술서 열기</span>
+        </a>
+        <div class="bridge-arrow" aria-hidden="true">→</div>
+        <a class="bridge-card dark" href="./portfolio/">
+          <p class="card-index">PORTFOLIO / DEEP DIVE</p>
+          <h3>왜 그렇게 설계했는지</h3>
+          <p>문제 정의, 구조 선택, 실패 대응과 결과를 시스템 도식과 함께 확인합니다.</p>
+          <span class="text-link">포트폴리오 탐색하기</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section shell" data-reveal>
+      <div class="section-head">
+        <span class="section-kicker">02 / Selected work</span>
+        <div>
+          <h2>복잡도를 줄이고<br>운영 가능성을 높인 사례.</h2>
+        </div>
+      </div>
+      <div class="case-preview-grid">
+        <a class="case-preview" href="./portfolio/#realtime">
+          <span class="number">CASE 01</span>
+          <h3>실시간 알림의 유실을<br>복구 가능한 흐름으로</h3>
+          <p>Redis Streams · Pub/Sub · SSE · Backfill</p>
+          <span class="case-arrow">↗</span>
+        </a>
+        <a class="case-preview" href="./portfolio/#performance">
+          <span class="number">CASE 02</span>
+          <h3>혈당 그래프 API<br>응답 시간 80% 개선</h3>
+          <p>Redis Cache · MySQL · Concurrency Control</p>
+          <span class="case-arrow">↗</span>
+        </a>
+        <a class="case-preview" href="./portfolio/#pipeline">
+          <span class="number">CASE 03</span>
+          <h3>동기 처리를<br>재처리 가능한 파이프라인으로</h3>
+          <p>Cron · AWS SQS · FIFO · Idempotency</p>
+          <span class="case-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section shell" data-reveal>
+      <div class="cta-band">
+        <h2>결과보다 그 결과를 만든<br>판단을 이야기하고 싶습니다.</h2>
+        <div class="cta-actions">
+          <a class="button button-light" href="mailto:ehwnghks@gmail.com">이메일 보내기 ↗</a>
+          <button class="button button-ghost" data-copy-email="ehwnghks@gmail.com">이메일 복사</button>
+        </div>
+      </div>
     </section>
 
     <footer class="footer shell">
-      <span>도주환 · Backend Engineer</span>
-      <a href="mailto:ehwnghks@gmail.com">ehwnghks@gmail.com</a>
+      <span>© 2026 도주환 · Backend Engineer</span>
+      <span>Seoul, Korea · Open to opportunities</span>
     </footer>
   </main>
 </body>
