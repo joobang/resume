@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="도주환 Backend Engineering Portfolio">
+  <title>도주환 | 프로젝트 포트폴리오</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="page">
+  <header class="page-header">
+    <nav class="nav shell">
+      <a class="brand" href="../">도주환<span>.</span></a>
+      <div class="nav-links">
+        <a href="../resume/">Resume</a>
+        <a href="./">Portfolio</a>
+        <a href="mailto:ehwnghks@gmail.com">Contact</a>
+      </div>
+    </nav>
+    <div class="page-title shell">
+      <p class="eyebrow">PORTFOLIO / SELECTED CASE STUDIES</p>
+      <h1>문제를 발견하고,<br><em>구조로 해결합니다.</em></h1>
+      <p>성능, 데이터 정합성, 비동기 처리, 운영 자동화처럼 제품이 커질수록 중요해지는 문제를 어떻게 해결했는지 기록했습니다.</p>
+      <a class="back-link" href="../resume/">경력기술서로 이동 →</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section shell">
+      <div class="section-heading">
+        <span class="section-kicker">Approach</span>
+        <h2>일하는 방식</h2>
+      </div>
+      <div class="process">
+        <article class="process-card"><h3>상태와 경계를 먼저 봅니다</h3><p>기능 하나의 성공보다 여러 시스템 사이에서 상태가 어떻게 전파되고 어긋나는지 먼저 정의합니다.</p></article>
+        <article class="process-card"><h3>실패를 흐름 안에 넣습니다</h3><p>재시도·멱등성·backfill·fallback을 설계해 실패가 곧 데이터 손실이나 운영 중단으로 이어지지 않게 합니다.</p></article>
+        <article class="process-card"><h3>운영 가능한 형태로 남깁니다</h3><p>관측·자동화·문서화를 함께 구성해 담당자가 바뀌어도 다시 실행하고 원인을 추적할 수 있게 합니다.</p></article>
+      </div>
+    </section>
+
+    <section class="section shell" id="cases">
+      <div class="section-heading">
+        <span class="section-kicker">Selected Projects</span>
+        <h2>프로젝트 사례</h2>
+      </div>
+
+      <article class="case">
+        <div class="case-top">
+          <div>
+            <p class="eyebrow">01 / REAL-TIME SYSTEM</p>
+            <h3>멀티 인스턴스 환경의 실시간 알림 시스템</h3>
+            <div class="tags"><span class="tag">Redis Streams</span><span class="tag">Pub/Sub</span><span class="tag">SSE</span><span class="tag">Backfill</span></div>
+          </div>
+        </div>
+        <p class="case-intro">사용자의 챕터·미션 완료 이벤트를 실시간으로 전달하면서, 재연결이나 멀티 인스턴스 환경에서도 이벤트가 유실되지 않는 구조가 필요했습니다.</p>
+        <div class="case-grid">
+          <div class="case-block"><h4>PROBLEM</h4><p>단일 인스턴스 전제의 실시간 전달은 scale-out과 네트워크 재연결 상황에서 순서와 유실을 보장하기 어려웠습니다.</p></div>
+          <div class="case-block"><h4>APPROACH</h4><p>Redis Streams를 이벤트 원장으로 두고 Pub/Sub과 SSE를 연결했습니다. Last-Event-ID와 lastSentId를 기준으로 backfill을 구현했습니다.</p></div>
+          <div class="case-block result"><h4>RESULT</h4><strong>일관된 수신 경험</strong><p>멀티 인스턴스와 재연결 상황에서도 놓친 이벤트를 복구할 수 있는 기반을 마련했습니다.</p></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-top">
+          <div>
+            <p class="eyebrow">02 / PERFORMANCE</p>
+            <h3>혈당 그래프 API 응답 속도 개선</h3>
+            <div class="tags"><span class="tag">Redis Cache</span><span class="tag">MySQL</span><span class="tag">Concurrency Control</span></div>
+          </div>
+        </div>
+        <p class="case-intro">혈당 데이터 조회는 사용자 경험과 직결되지만, 동일한 요청이 반복되고 데이터 집계 비용이 커지면서 응답 지연이 발생했습니다.</p>
+        <div class="case-grid">
+          <div class="case-block"><h4>PROBLEM</h4><p>반복 조회와 중복 요청이 DB에 부담을 주고, 그래프 화면의 초기 응답을 늦추고 있었습니다.</p></div>
+          <div class="case-block"><h4>APPROACH</h4><p>공통 Redis 캐시 구조를 모듈화하고 중복 요청을 제어했습니다. 병목 쿼리를 분석해 MySQL 쿼리를 튜닝했습니다.</p></div>
+          <div class="case-block result"><h4>RESULT</h4><strong>2.5s → 0.5s</strong><p>응답 속도를 약 80% 개선하고 다른 조회 API에도 재사용 가능한 캐시 구조를 만들었습니다.</p></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-top">
+          <div>
+            <p class="eyebrow">03 / ASYNC PIPELINE</p>
+            <h3>동기 처리에서 재처리 가능한 비동기 파이프라인으로</h3>
+            <div class="tags"><span class="tag">Cron</span><span class="tag">AWS SQS</span><span class="tag">Consumer</span><span class="tag">Idempotency</span></div>
+          </div>
+        </div>
+        <p class="case-intro">혈당 갱신·보정·후처리가 하나의 동기 흐름에 묶여 있어 일부 단계의 장애가 전체 처리를 지연시키고 재처리를 어렵게 만들었습니다.</p>
+        <div class="case-grid">
+          <div class="case-block"><h4>PROBLEM</h4><p>처리 단계가 강하게 결합되어 장애 격리와 실패 지점별 재처리가 어려웠습니다.</p></div>
+          <div class="case-block"><h4>APPROACH</h4><p>Cron에서 작업을 발행하고 SQS Consumer가 후처리하도록 분리했습니다. idempotency key와 FIFO로 중복과 순서를 제어했습니다.</p></div>
+          <div class="case-block result"><h4>RESULT</h4><strong>재처리 가능한 구조</strong><p>처리 책임을 단계별로 나누어 장애 격리와 확장성을 높였습니다.</p></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-top">
+          <div>
+            <p class="eyebrow">04 / ENERGY SAAS</p>
+            <h3>에너지 SaaS 통계 API와 데이터 수집 개선</h3>
+            <div class="tags"><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">S3</span><span class="tag">Jenkins</span></div>
+          </div>
+        </div>
+        <p class="case-intro">초당 원시 데이터를 매 요청마다 집계하던 통계 API와, 실패 시 전체 흐름을 다시 확인해야 했던 수집 배치를 개선했습니다.</p>
+        <div class="case-grid">
+          <div class="case-block"><h4>APPROACH</h4><p>1분 평균을 선집계해 Redis에 저장하고, 수집·전처리·적재를 모듈로 분리해 실패 지점별 재시도와 Slack 알림을 구성했습니다.</p></div>
+          <div class="case-block"><h4>OPERATION</h4><p>MongoDB Atlas 샤딩과 인덱스 튜닝, Docker·ECR·Jenkins·ECS 배포 자동화를 적용했습니다.</p></div>
+          <div class="case-block result"><h4>RESULT</h4><strong>4–5s → 0.9s</strong><p>대시보드 응답 개선, 비용 30% 절감, 데이터 수집 실패율 5%에서 0.2%로 개선했습니다.</p></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-top">
+          <div>
+            <p class="eyebrow">05 / SEARCH & ETL</p>
+            <h3>대규모 문서 검색과 색인 파이프라인</h3>
+            <div class="tags"><span class="tag">Elasticsearch</span><span class="tag">Logstash</span><span class="tag">Apache NiFi</span><span class="tag">Spark SQL</span></div>
+          </div>
+        </div>
+        <p class="case-intro">수천만 건의 거래 데이터와 5억 건 이상의 첨부파일을 다루는 검색·색인 시스템에서 처리 시간과 실패 재처리 문제를 해결했습니다.</p>
+        <div class="case-grid">
+          <div class="case-block"><h4>APPROACH</h4><p>RDB 로직을 Spark SQL과 Elasticsearch로 재구현하고, 대용량 색인 배치와 실패 재처리 전략을 설계했습니다.</p></div>
+          <div class="case-block"><h4>PIPELINE</h4><p>NiFi 기반 수집·가공·적재·추출·전송 단계를 자동화해 원천 데이터부터 검색 결과까지의 흐름을 관리했습니다.</p></div>
+          <div class="case-block result"><h4>RESULT</h4><strong>90일 → 30일</strong><p>전체 색인 기간을 단축하고 운영자가 수동으로 복구하던 구간을 자동화했습니다.</p></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-top">
+          <div>
+            <p class="eyebrow">06 / OPERATIONS</p>
+            <h3>반복 운영 업무를 제품 기능으로 전환</h3>
+            <div class="tags"><span class="tag">Slack Slash Command</span><span class="tag">Cron</span><span class="tag">Kakao Alimtalk</span><span class="tag">Audit Log</span></div>
+          </div>
+        </div>
+        <p class="case-intro">운영팀이 반복적으로 수행하던 월간 리포트 생성과 내부 상태 변경 작업을 안전하게 자동화했습니다.</p>
+        <div class="case-grid">
+          <div class="case-block"><h4>REPORT</h4><p>혈당·식사·활동 데이터를 집계하는 통계 스키마와 API를 설계하고, Cron과 카카오 알림톡 발송까지 연결했습니다.</p></div>
+          <div class="case-block"><h4>CONTROL</h4><p>Slack에서 실행되는 내부 도구에 승인 플로우·권한 제어·감사 로그를 포함해 운영 환경의 안전성을 확보했습니다.</p></div>
+          <div class="case-block result"><h4>RESULT</h4><strong>월 8시간 → 0시간</strong><p>반복 수작업을 시스템으로 전환해 운영팀의 시간을 절감했습니다.</p></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section shell">
+      <div class="section-heading">
+        <span class="section-kicker">Contact</span>
+        <h2>함께 이야기하기</h2>
+      </div>
+      <p class="case-intro">백엔드 시스템의 성능, 안정성, 운영 구조를 개선하는 문제에 관심이 있습니다.</p>
+      <a class="button button-primary" href="mailto:ehwnghks@gmail.com">ehwnghks@gmail.com <span>↗</span></a>
+      <br>
+      <a class="back-link" href="../">← 처음으로</a>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <span>도주환 · Backend Engineer</span>
+    <a href="../resume/">Resume</a>
+  </footer>
+</body>
+</html>
