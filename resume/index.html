@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="도주환 Backend Engineer Resume">
+  <title>도주환 | 경력기술서</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="page">
+  <header class="page-header">
+    <nav class="nav shell">
+      <a class="brand" href="../">도주환<span>.</span></a>
+      <div class="nav-links">
+        <a href="./">Resume</a>
+        <a href="../portfolio/">Portfolio</a>
+        <a href="mailto:ehwnghks@gmail.com">Contact</a>
+      </div>
+    </nav>
+    <div class="page-title shell">
+      <p class="eyebrow">RESUME / BACKEND ENGINEER</p>
+      <h1>데이터 흐름을 설계하고<br><em>운영 가능한 시스템</em>을 만듭니다.</h1>
+      <p>TypeScript·NestJS 및 AWS 기반의 백엔드 엔지니어입니다. 헬스케어 앱, 에너지 SaaS, 문서 검색 프로젝트에서 백엔드 개발과 데이터 파이프라인, 인프라를 설계해왔습니다.</p>
+      <a class="back-link" href="../portfolio/">프로젝트 포트폴리오로 이동 →</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section shell">
+      <div class="section-heading">
+        <span class="section-kicker">Snapshot</span>
+        <h2>핵심 역량</h2>
+      </div>
+      <div class="three-grid">
+        <article class="info-card">
+          <h3>Reliable Backend</h3>
+          <p>트래픽 급증과 장애 상황에서도 원인을 빠르게 분리하고, 재시도·멱등성·분산 락으로 안정성을 높입니다.</p>
+        </article>
+        <article class="info-card">
+          <h3>Data Flow</h3>
+          <p>동기 흐름을 비동기 파이프라인으로 전환하고, 수집·가공·적재·후처리 단계의 책임을 분리합니다.</p>
+        </article>
+        <article class="info-card">
+          <h3>Operational Efficiency</h3>
+          <p>반복되는 배포와 운영 업무를 자동화하고, 관측 가능한 시스템으로 팀의 대응 속도를 높입니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="experience">
+      <div class="section-heading">
+        <span class="section-kicker">01 / Experience</span>
+        <h2>경력사항</h2>
+      </div>
+
+      <article class="experience">
+        <div>
+          <div class="company">아이디에스앤트러스트</div>
+          <div class="date">2024.11 — 현재</div>
+          <div class="role">Backend Engineer</div>
+        </div>
+        <div>
+          <h3>혈당 다이어트 앱 웰다 · 핵심 도메인과 운영 고도화</h3>
+          <p>혈당·식사·단식·미션 등 사용자 핵심 흐름의 API와 배치, 후처리 로직을 개발하고 서버 인프라를 관리했습니다.</p>
+          <div class="metric-row">
+            <div class="metric"><strong>2.5s → 0.5s</strong><span>혈당 그래프 응답 속도</span></div>
+            <div class="metric"><strong>8h → 0h</strong><span>월간 리포트 운영 작업</span></div>
+            <div class="metric"><strong>Redis · SQS</strong><span>비동기 처리 기반</span></div>
+          </div>
+          <ul>
+            <li>Redis Streams·Pub/Sub·SSE 기반 실시간 알림과 Last-Event-ID 기반 이벤트 복구(backfill) 구현.</li>
+            <li>Cron → SQS → Consumer 구조로 혈당 처리 파이프라인을 분리해 장애 격리와 재처리 가능성 확보.</li>
+            <li>Redis 캐시, 중복 요청 제어, MySQL 쿼리 튜닝으로 혈당 그래프 응답 속도 2.5초에서 0.5초로 개선.</li>
+            <li>Redis idempotency key·분산 락·SQS FIFO를 조합해 사용자 단위 처리 순서와 중복 실행 제어.</li>
+            <li>GitHub Actions 기반 ECS 배포 자동화와 Sentry 기반 에러 관측 체계 구축.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience">
+        <div>
+          <div class="company">크로커스 에너지</div>
+          <div class="date">2024.01 — 2024.10</div>
+          <div class="role">Backend Engineer</div>
+        </div>
+        <div>
+          <h3>에너지 B2B SaaS · BackOffice와 데이터 처리 시스템</h3>
+          <p>계측 장비와 수요 업체를 관리하는 SaaS BackOffice를 구축하고 서버 인프라와 배치 파이프라인을 개선했습니다.</p>
+          <div class="metric-row">
+            <div class="metric"><strong>4–5s → 0.9s</strong><span>통계 대시보드 응답</span></div>
+            <div class="metric"><strong>30%↓</strong><span>MongoDB Atlas 비용</span></div>
+            <div class="metric"><strong>5% → 0.2%</strong><span>수집 실패율</span></div>
+          </div>
+          <ul>
+            <li>MongoDB 기반 도메인 모델과 장비·모듈 연결 관계를 시각화하는 계통 구성도 기능 개발.</li>
+            <li>초당 원시 데이터를 1분 평균으로 선집계해 Redis에 저장하고 통계 API 응답 개선.</li>
+            <li>샤딩 키 설계, 인덱스 재구성, 쿼리 튜닝으로 성능과 비용 최적화.</li>
+            <li>Docker → ECR → Jenkins → ECS 배포 파이프라인과 테스트 실패 자동 중단 구성.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience">
+        <div>
+          <div class="company">아이브릭스</div>
+          <div class="date">2019.11 — 2023.05</div>
+          <div class="role">Backend Engineer</div>
+        </div>
+        <div>
+          <h3>검색 시스템과 대규모 데이터 파이프라인</h3>
+          <p>문서 검색, 공공·금융 시스템 프로젝트에서 Elasticsearch와 ETL 파이프라인을 설계하고 운영 자동화를 구현했습니다.</p>
+          <div class="metric-row">
+            <div class="metric"><strong>12h → 6h</strong><span>AML 마트 테이블 생성</span></div>
+            <div class="metric"><strong>90d → 30d</strong><span>대용량 문서 색인 기간</span></div>
+            <div class="metric"><strong>5억+</strong><span>첨부파일 색인 규모</span></div>
+          </div>
+          <ul>
+            <li>국정원 가이드 문서 검색 시스템의 Elasticsearch 인덱스와 ETL 파이프라인 설계.</li>
+            <li>현대캐피탈 AML 시스템에서 수천만 건 거래 데이터 적재 프로세스 구성.</li>
+            <li>LG CNS 내부 문서 색인 시스템에서 ES 클러스터 확장과 실패 재처리 자동화.</li>
+            <li>Apache NiFi 기반 수집·가공·적재·추출·전송 전 단계 자동화.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="section shell" id="skills">
+      <div class="section-heading">
+        <span class="section-kicker">02 / Engineering</span>
+        <h2>기술 스택</h2>
+      </div>
+      <div class="skills">
+        <div class="skill-group"><h3>Language & Frameworks</h3><p>TypeScript · Node.js · NestJS · Express</p></div>
+        <div class="skill-group"><h3>Databases</h3><p>MySQL · MongoDB · Redis</p></div>
+        <div class="skill-group"><h3>Search & ETL</h3><p>Elasticsearch · Logstash · Apache NiFi</p></div>
+        <div class="skill-group"><h3>DevOps</h3><p>AWS EC2 · ECS · S3 · CloudFront · Jenkins · GitHub Actions</p></div>
+        <div class="skill-group"><h3>Queue & Async</h3><p>BullMQ · AWS SQS · Redis Streams · Pub/Sub</p></div>
+        <div class="skill-group"><h3>Quality & Observability</h3><p>Jest · Swagger · Sentry · Shell</p></div>
+        <div class="skill-group"><h3>Architecture</h3><p>REST API · Batch · Event-driven · Idempotency</p></div>
+        <div class="skill-group"><h3>Collaboration</h3><p>Git Flow · Commit Convention · API Documentation</p></div>
+      </div>
+    </section>
+
+    <section class="section shell" id="education">
+      <div class="section-heading">
+        <span class="section-kicker">03 / Background</span>
+        <h2>학력 · 자격</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item"><strong>순천향대학교</strong><span>정보보호학과 · 2010.03 — 2016.02</span></div>
+        <div class="timeline-item"><strong>정보처리기사</strong><span>2015.10 취득</span></div>
+        <div class="timeline-item"><strong>비트캠프</strong><span>자바 기반 웹 & 앱 개발자 양성과정 · 2019.02 — 2019.08</span></div>
+      </div>
+      <a class="back-link" href="../">← 처음으로</a>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <span>도주환 · Backend Engineer</span>
+    <a href="mailto:ehwnghks@gmail.com">ehwnghks@gmail.com</a>
+  </footer>
+</body>
+</html>
